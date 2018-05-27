@@ -3,9 +3,11 @@ Plant genome assembly
 
 
 #Download the files
+
 nohup xargs -n1 fastq-dump -I --split-3 --gzip --skip-technical <sralist.txt &
 
 #build the directory structure
+
 ./build_dir.pl dryas.csv
 ./build_dir.pl purshia.csv
 

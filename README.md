@@ -3,13 +3,73 @@ Plant genome assembly
 
 
 #Download the files
-
+```
 nohup xargs -n1 fastq-dump -I --split-3 --gzip --skip-technical <sralist.txt &
-
+```
 #build the directory structure
-
+```
 ./build_dir.pl dryas.csv
 ./build_dir.pl purshia.csv
+```
+
+
+#PURSHIA ANALYSIS
+```
+mv SRR531400* ./purshia/raw_dna/paired/purshia/strain1/.
+cd ./purshia/raw_dna/paired/purshia/strain1/
+mv SRR531400*_1.* ./F
+mv SRR531400*_2.* ./R
+cd ~/scratch/dryas/purshia
+
+# Paired end QC
+for RawData in $(ls raw_dna/paired/purshia/strain1/*/*.fastq.gz); do
+echo $RawData;
+ProgDir=/home/harrir/git_repos/seq_tools/dna_qc;
+qsub $ProgDir/run_fastqc.sh $RawData;
+done
+```
+
+#trimming
+```
+Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314001_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314001_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314004_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314004_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314002_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314002_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314005_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314005_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314003_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314003_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+```
+
+#kmer
+
+
+#ASSEMBLY
+
+
+
+
 
 
 
@@ -62,7 +122,7 @@ qsub $ProgDir/run_fastqc.sh $RawData;
 done
 
 
-# run fastqmcf paired end (modify)
+# run fastqmcf paired end
 
 for Strain in strain1; do
 echo $Strain

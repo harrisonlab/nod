@@ -68,7 +68,7 @@ qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
 
 #ASSEMBLY
 
-
+qsub sub_soap.sh purshia.config ./assembly/ 63 paths.purshia
 
 
 

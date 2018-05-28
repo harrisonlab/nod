@@ -21,7 +21,7 @@ OutDir=$2
 Size=$3
 dirmv=$4
 
-echo  "Running Canu with the following inputs:"
+echo  "Running Soap2 with the following inputs:"
 echo "config - $config"
 echo "OutDir - $OutDir"
 echo "kmer - $Size"

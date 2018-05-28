@@ -20,8 +20,9 @@ cd ./purshia/raw_dna/paired/purshia/strain1/
 mv SRR531400*_1.* ./F
 mv SRR531400*_2.* ./R
 cd ~/scratch/dryas/purshia
-
+```
 # Paired end QC
+```
 for RawData in $(ls raw_dna/paired/purshia/strain1/*/*.fastq.gz); do
 echo $RawData;
 ProgDir=/home/harrir/git_repos/seq_tools/dna_qc;

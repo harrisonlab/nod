@@ -42,7 +42,7 @@ cat $dirmv |xargs -n1 -i cp {} $WorkDir
 
 cd $WorkDir
 
-SOAPdenovo-63mer all -s $config -o $WorkDir/outputGraph -K $Size [options]
+SOAPdenovo-63mer all -s $config -o $WorkDir/outputGraph -K $Size -p 24
 
 mkdir -p $CurPath/$OutDir
 cp $WorkDir/* $CurPath/$OutDir/.

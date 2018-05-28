@@ -30,7 +30,7 @@ qsub $ProgDir/run_fastqc.sh $RawData;
 done
 ```
 
-#trimming
+#trimming PE libs
 ```
 Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314001_1.fastq.gz )
 Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314001_2.fastq.gz )
@@ -63,12 +63,27 @@ ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
 qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
 ```
 
-#kmer
+#kmer for size estimate
 
 
 #ASSEMBLY
-
+```
 qsub sub_soap.sh purshia.config ./assembly/ 63 paths.purshia
+```
+#quast
+```
+ProgDir=/home/harrir/git_repos/seq_tools/assemblers/assembly_qc/quast
+Assembly=$(ls -d assembly/OUTPUTFILE.FASTA)
+OutDir=$(ls -d assembly/filtered_contigs)
+qsub $ProgDir/sub_quast.sh $Assembly $OutDir
+```
+
+
+
+
+
+
+
 
 
 

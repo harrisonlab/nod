@@ -13,7 +13,7 @@ nohup xargs -n1 fastq-dump -I --split-3 --gzip --skip-technical <sralist.txt &
 ```
 
 
-#PURSHIA ANALYSIS
+# PURSHIA ANALYSIS
 ```
 mv SRR531400* ./purshia/raw_dna/paired/purshia/strain1/.
 cd ./purshia/raw_dna/paired/purshia/strain1/
@@ -21,7 +21,7 @@ mv SRR531400*_1.* ./F
 mv SRR531400*_2.* ./R
 cd ~/scratch/dryas/purshia
 ```
-# Paired end QC
+#Paired end QC
 ```
 for RawData in $(ls raw_dna/paired/purshia/strain1/*/*.fastq.gz); do
 echo $RawData;

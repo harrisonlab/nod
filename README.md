@@ -68,7 +68,7 @@ qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
 
 #ASSEMBLY
 ```
-qsub sub_soap.sh purshia.config ./assembly/ 63 paths.purshia
+qsub /home/harrir/git_repos/nod/sub_soap.sh /home/harrir/git_repos/nod/purshia.config ./assembly/ 63 /home/harrir/git_repos/nod/paths.purshia
 ```
 #quast
 ```

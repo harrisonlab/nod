@@ -38,9 +38,8 @@ WorkDir="$TMPDIR"/soap
 
 mkdir -p $WorkDir
 #copy files to temp (https://linux.101hacks.com/linux-commands/xargs-command-examples/)
-cat $dirmv |xargs -n1 -i cp {} $WorkDir
-
 cd $WorkDir
+cat $dirmv |xargs -n1 -i cp {} .
 
 SOAPdenovo-63mer all -s $config -o $WorkDir/outputGraph -K $Size -p 24
 

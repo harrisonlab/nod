@@ -22,6 +22,8 @@ mv SRR531400*_2.* ./R
 cd ~/scratch/dryas/purshia
 ```
 #Paired end QC
+#ensure you are in the correct directory location
+
 ```
 for RawData in $(ls raw_dna/paired/purshia/strain1/*/*.fastq.gz); do
 echo $RawData;
@@ -31,6 +33,8 @@ done
 ```
 
 #trimming PE libs
+#ensure you are in the correct directory location
+
 ```
 Read_F=$(ls raw_dna/paired/purshia/strain1/F/SRR5314001_1.fastq.gz )
 Read_R=$(ls raw_dna/paired/purshia/strain1/R/SRR5314001_2.fastq.gz )
@@ -67,9 +71,13 @@ qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
 
 
 #ASSEMBLY
+#ensure you are in the correct directory location
+
 ```
+cd /data/scratch/harrir/dryas/purshia
 qsub /home/harrir/git_repos/nod/sub_soap.sh /home/harrir/git_repos/nod/purshia.config ./assembly/ 63 /home/harrir/git_repos/nod/paths.purshia
 ```
+
 #quast
 ```
 ProgDir=/home/harrir/git_repos/seq_tools/assemblers/assembly_qc/quast

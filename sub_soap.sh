@@ -5,15 +5,15 @@
 #$ -S /bin/bash
 #$ -cwd
 #$ -pe smp 24
-#$ -l virtual_free=15.5G
-#$ -l h=blacklace11.blacklace
+#$ -l virtual_free=94G
 
 Usage="sub_soap.sh <config.file> <outputdir> <kmer> <filestocopy>"
 echo "$Usage"
 
 # ---------------
 # Step 1
-# Collect inputs
+# Collect inputs -l h=blacklace11.blacklace
+
 # ---------------
 
 config=$1
@@ -30,6 +30,8 @@ echo "file with files to move $dirmv"
 CurPath=$PWD
 WorkDir="$TMPDIR"/soap
 
+echo "Current path $PWD"
+echo "Current path $WorkDir"
 
 # ---------------
 # Step 2
@@ -39,6 +41,9 @@ WorkDir="$TMPDIR"/soap
 mkdir -p $WorkDir
 #copy files to temp (https://linux.101hacks.com/linux-commands/xargs-command-examples/)
 cd $WorkDir
+
+echo "Current paths $PWD"
+
 base=`cat $dirmv`
 ls -d -1 $base"F"/** |xargs -n1 -i cp {} .
 ls -d -1 $base"R"/** |xargs -n1 -i cp {} .

@@ -4,8 +4,9 @@
 
 #$ -S /bin/bash
 #$ -cwd
-#$ -pe smp 16
-#$ -l virtual_free=90G
+#$ -pe smp 12
+#$ -l virtual_free=94.9G
+#$ -l h=blacklace01.blacklace|blacklace11.blacklace
 
 Usage="sub_soap.sh <config.file> <outputdir> <kmer> <filestocopy>"
 echo "$Usage"

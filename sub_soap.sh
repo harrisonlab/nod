@@ -4,8 +4,8 @@
 
 #$ -S /bin/bash
 #$ -cwd
-#$ -pe smp 24
-#$ -l virtual_free=94G
+#$ -pe smp 16
+#$ -l virtual_free=90G
 
 Usage="sub_soap.sh <config.file> <outputdir> <kmer> <filestocopy>"
 echo "$Usage"

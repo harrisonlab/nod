@@ -4,7 +4,7 @@
 
 #$ -S /bin/bash
 #$ -cwd
-#$ -pe smp 12
+#$ -pe smp 24
 #$ -l virtual_free=94.9G
 #$ -l h=blacklace01.blacklace|blacklace11.blacklace
 

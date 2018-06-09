@@ -88,15 +88,6 @@ qsub $ProgDir/sub_quast.sh $Assembly $OutDir
 
 
 
-
-
-
-
-
-
-
-
-
 #DRYAS ANALYSIS
 #add additional directories
 mkdir /data/scratch/harrir/dryas/dryas/raw_dna/mates/
@@ -146,26 +137,93 @@ qsub $ProgDir/run_fastqc.sh $RawData;
 done
 
 
-# run fastqmcf paired end
+#trimming PE libs
+#ensure you are in the correct directory location
+#SRR5313975	170bp
+#SRR5313976	250bp
+#SRR5313977	350bp
+#SRR5313978	500bp
+#SRR5313979	800bp
 
-for Strain in strain1; do
-echo $Strain
-Read_F=$(ls raw_dna/paired/$Strain/F/cact414_130517_S2_L001_R1_001.fastq.gz)
-Read_R=$(ls raw_dna/paired/$Strain/R/cact414_130517_S2_L001_R2_001.fastq.gz)
+```
+Read_F=$(ls raw_dna/paired/dryas/strain1/F/SRR5313975_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/dryas/strain1/R/SRR5313975_2.fastq.gz )
 IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
 ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
 qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
-done
 
+Read_F=$(ls raw_dna/paired/dryas/strain1/F/SRR5313976_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/dryas/strain1/R/SRR5313976_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/dryas/strain1/F/SRR5313977_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/dryas/strain1/R/SRR5313977_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/dryas/strain1/F/SRR5313978_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/dryas/strain1/R/SRR5313978_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/paired/dryas/strain1/F/SRR5313979_1.fastq.gz )
+Read_R=$(ls raw_dna/paired/dryas/strain1/R/SRR5313979_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+```
+
+#trimming MP libs
+#ensure you are in the correct directory location
+#Dryas libraries
+
+#SRR5313980	2kp
+#SRR5313981	6kp
+#SRR5313982	10kp
+
+
+Read_F=$(ls raw_dna/mates/dryas/strain1/F/SRR5313980_1.fastq.gz )
+Read_R=$(ls raw_dna/mates/dryas/strain1/R/SRR5313980_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/mates/dryas/strain1/F/SRR5313981_1.fastq.gz )
+Read_R=$(ls raw_dna/mates/dryas/strain1/R/SRR5313981_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+Read_F=$(ls raw_dna/mates/dryas/strain1/F/SRR5313982_1.fastq.gz )
+Read_R=$(ls raw_dna/mates/dryas/strain1/R/SRR5313982_2.fastq.gz )
+IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
+ProgDir=/home/harrir/git_repos/seq_tools/rna_qc
+qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
+
+```
 
 # do kmer counting on PE data
-  for Strain in dryas; do
-    echo $Strain
-    Trim_F=$(ls qc_dna/paired/P.*/$Strain/F/*.fq.gz)
-    Trim_R=$(ls qc_dna/paired/P.*/$Strain/R/*.fq.gz)
-    ProgDir=/home/armita/git_repos/emr_repos/tools/seq_tools/dna_qc
-    qsub $ProgDir/kmc_kmer_counting.sh $Trim_F $Trim_R
-  done
+#  for Strain in dryas; do
+#    echo $Strain
+#    Trim_F=$(ls qc_dna/paired/P.*/$Strain/F/*.fq.gz)
+#    Trim_R=$(ls qc_dna/paired/P.*/$Strain/R/*.fq.gz)
+#    ProgDir=/home/armita/git_repos/emr_repos/tools/seq_tools/dna_qc
+#    qsub $ProgDir/kmc_kmer_counting.sh $Trim_F $Trim_R
+#  done
+
+#ASSEMBLY
+#ensure you are in the correct directory location
+
+```
+cd /data/scratch/harrir/dryas/purshia
+qsub /home/harrir/git_repos/nod/sub_soap.sh /home/harrir/git_repos/nod/dryas.config ./assembly/ 63 /home/harrir/git_repos/nod/paths.dryas
+```
+
+
 
 
 #Dryas libraries
@@ -188,20 +246,6 @@ SRR5314005	800bp
 
 
 
-#run an assembly for dryas
-
- for Strain in 415 416 A4 SCRP245_v2 Bc23 Nov5 Nov77 ONT3; do
-    F_Read=$(ls qc_dna/paired/P.*/$Strain/F/*.fq.gz)
-    R_Read=$(ls qc_dna/paired/P.*/$Strain/R/*.fq.gz)
-    CovCutoff='10'
-    ProgDir=/home/armita/git_repos/emr_repos/tools/seq_tools/assemblers/spades
-    Species=$(echo $F_Read | rev | cut -f4 -d '/' | rev)
-    OutDir=assembly/spades/$Species/$Strain
-    echo $Species
-    echo $Strain
-    qsub $ProgDir/submit_SPAdes.sh $F_Read $R_Read $OutDir correct $CovCutoff
-    # qsub $ProgDir/submit_dipSPAdes.sh $F_Read $R_Read $OutDir correct $CovCutoff
-  done
 
 #run quast
 

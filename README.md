@@ -14,6 +14,14 @@ nohup xargs -n1 fastq-dump -I --split-3 --gzip --skip-technical <sralist.txt &
 
 
 # PURSHIA ANALYSIS
+#Purshia libraries
+SRR5314001	170bp
+SRR5314002	250bp
+SRR5314003	350bp
+SRR5314004	500bp
+SRR5314005	800bp
+
+
 ```
 mv SRR531400* ./purshia/raw_dna/paired/purshia/strain1/.
 cd ./purshia/raw_dna/paired/purshia/strain1/
@@ -78,17 +86,37 @@ cd /data/scratch/harrir/dryas/purshia
 qsub /home/harrir/git_repos/nod/sub_soap.sh /home/harrir/git_repos/nod/purshia.config ./assembly/ 63 /home/harrir/git_repos/nod/paths.purshia
 ```
 
+#POSTASSEMBLY
+#ensure you are in the correct directory location
+```
+cd /data/scratch/harrir/dryas/purshia/assembly
+rm -rf SRR531400*
+```
+
 #quast
 ```
+mkdir ./assembly/filtered_contigs
 ProgDir=/home/harrir/git_repos/seq_tools/assemblers/assembly_qc/quast
-Assembly=$(ls -d assembly/OUTPUTFILE.FASTA)
-OutDir=$(ls -d assembly/filtered_contigs)
+Assembly=$(ls -d ./assembly/outputGraph.scafSeq)
+OutDir=$(ls -d ./assembly/filtered_contigs)
 qsub $ProgDir/sub_quast.sh $Assembly $OutDir
 ```
 
 
 
+
+
 #DRYAS ANALYSIS
+#Dryas libraries
+SRR5313975	170bp
+SRR5313976	250bp
+SRR5313977	350bp
+SRR5313978	500bp
+SRR5313979	800bp
+SRR5313980	2kp
+SRR5313981	6kp
+SRR5313982	10kp
+
 #add additional directories
 mkdir /data/scratch/harrir/dryas/dryas/raw_dna/mates/
 mkdir /data/scratch/harrir/dryas/dryas/raw_dna/mates/dryas
@@ -223,39 +251,28 @@ cd /data/scratch/harrir/dryas/purshia
 qsub /home/harrir/git_repos/nod/sub_soap.sh /home/harrir/git_repos/nod/dryas.config ./assembly/ 63 /home/harrir/git_repos/nod/paths.dryas
 ```
 
+#POSTASSEMBLY
+#ensure you are in the correct directory location
 
-
-
-#Dryas libraries
-SRR5313975	170bp
-SRR5313976	250bp
-SRR5313977	350bp
-SRR5313978	500bp
-SRR5313979	800bp
-SRR5313980	2kp
-SRR5313981	6kp
-SRR5313982	10kp
-
-#Purshia libraries
-SRR5314001	170bp
-SRR5314002	250bp
-SRR5314003	350bp
-SRR5314004	500bp
-SRR5314005	800bp
-
-
-
-
+```
+cd /data/scratch/harrir/dryas/purshia/assembly
+rm -rf SRR531400*
+```
 
 #run quast
 
- for Strain in $(ls -d assembly/spades/*/* | rev | cut -f1 -d'/' | rev); do
-    ProgDir=/home/armita/git_repos/emr_repos/tools/seq_tools/assemblers/assembly_qc/quast
-    Assembly=$(ls -d assembly/spades/*/$Strain/filtered_contigs/contigs_min_500bp.fasta)
-    Species=$(echo $Assembly | rev | cut -f4 -d'/' | rev)
-    OutDir=$(ls -d assembly/spades/*/$Strain/filtered_contigs)
-    qsub $ProgDir/sub_quast.sh $Assembly $OutDir
-  done
+```
+
+```
+
+
+
+
+
+
+
+
+
 
 
 #transcriptomes

@@ -213,7 +213,7 @@ qsub $ProgDir/rna_qc_fastq-mcf.sh $Read_F $Read_R $IluminaAdapters DNA
 #SRR5313981	6kp
 #SRR5313982	10kp
 
-
+```
 Read_F=$(ls raw_dna/mates/dryas/strain1/F/SRR5313980_1.fastq.gz )
 Read_R=$(ls raw_dna/mates/dryas/strain1/R/SRR5313980_2.fastq.gz )
 IluminaAdapters=/home/harrir/git_repos/seq_tools/ncbi_adapters.fa
